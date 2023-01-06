@@ -18,4 +18,11 @@ def type_coordonnee(coord: tuple) -> bool:
     return type(coord) == tuple and len(coord) == 2 and type(coord[0]) == int and type(coord[1]) == int \
         and coord[0] >= 0 and coord[1] >= 0
 
+def construireCoordonnee(li :int, co :int)->tuple:
+    '''
+    la fonction retourne un tuple qui contient le num de ligne et le num de colonne passés en paramètre
+    '''
+    res = (li,co)
+    return res
+
 
