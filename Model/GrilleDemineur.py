@@ -51,4 +51,18 @@ def type_grille_demineur(grille: list) -> bool:
     #         return False
     # return True
 
-
+def construireGrilleDemineur(li:int,co:int):
+    '''
+    retourne un tableau 2D régulier qui fera office de grille pour démineur
+    '''
+    if type(li)!=int or type(co)!=int:
+        raise TypeError(f" construireGrilleDemineur : Le nombre de lignes {type(li)} ou de colonnes {type(co)} n’est pas un entier.")
+    if li <= 0 or co <= 0 :
+        raise ValueError(f"construireGrilleDemineur : Le nombre de lignes {li} ou de colonnes {co} est négatif ou nul.")
+    tab = []
+    for i in range(li):
+        lst = []
+        for j in range(co):
+            lst.append(construireCellule())
+        tab.append(lst)
+    return tab

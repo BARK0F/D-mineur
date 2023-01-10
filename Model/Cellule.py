@@ -65,7 +65,7 @@ def setContenuCellule(dic:dict, contenu:int)->None:
     if type(contenu)!=int:
         raise TypeError("setContenuCellule : Le second paramètre n’est pas un entier")
     if isContenuCorrect(contenu) == False:
-        raise ValueError(f"construireCellule : le contenu {contenu} n’est pas correct")
+        raise ValueError(f"setContenuCellule : la valeur du contenu {contenu} n’est pas correcte")
     dic[const.CONTENU] = contenu
     return None
 
