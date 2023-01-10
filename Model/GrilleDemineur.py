@@ -66,3 +66,20 @@ def construireGrilleDemineur(li:int,co:int):
             lst.append(construireCellule())
         tab.append(lst)
     return tab
+
+def getNbLignesGrilleDemineur(grille:list):
+    '''
+    retourne le nombre de ligne dans la grille du démineur
+    '''
+    if type_grille_demineur(grille)==False:
+        raise TypeError("getNbLignesGrilleDemineur : Le paramètre n’est pas une grille")
+    return len(grille)
+
+def getNbColonnesGrilleDemineur(grille:list):
+    '''
+    retourne le nombre de colonne dans la grille du démineur
+    '''
+    if type_grille_demineur(grille)==False:
+        raise TypeError("getNbColonnesGrilleDemineur : Le paramètre n’est pas une grille")
+    return len(grille[0])
+
