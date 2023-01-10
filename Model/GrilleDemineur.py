@@ -105,3 +105,34 @@ def getCelluleGrilleDemineur(grille:list,coord:tuple):
     if isCoordonneeCorrecte(grille,coord)==False:
         raise IndexError("getCelluleGrilleDemineur : coordonnée non contenue dans la grille")
     return grille[coord[0]][coord[1]]
+
+def getContenuGrilleDemineur(grille:list,coord:tuple):
+    '''
+    retourne le contenue de la cellule se trouvant dans la grille passée en paramètre grâce aux coordonnée passée en paramètre
+    '''
+    con = getCelluleGrilleDemineur(grille,coord)
+    return getContenuCellule(con)
+def setContenuGrilleDemineur(grille:list,coord:tuple,contenu:int)->None:
+    '''
+    ne retourne rien, modifie le contenu de la cellule se trouvant aux coordonnée dans la grille
+    '''
+    con = getCelluleGrilleDemineur(grille,coord)
+    setContenuCellule(con,contenu)
+    return None
+
+def isVisibleGrilleDemineur(grille:list,coord:tuple)->bool:
+    '''
+    retourne si la cellule se trouvant aux coordonée dans la grille est visible ou non
+    '''
+    con = getCelluleGrilleDemineur(grille,coord)
+    return isVisibleCellule(con)
+
+def setVisibleGrilleDemineur(grille:list,coord:tuple,vision:bool)->None:
+    con = getCelluleGrilleDemineur(grille,coord)
+    setVisibleCellule(con,vision)
+    return None
+
+def contientMineGrilleDemineur(grille:list,coord:tuple)->bool:
+    con = getCelluleGrilleDemineur(grille,coord)
+    return contientMineCellule(con)
+
