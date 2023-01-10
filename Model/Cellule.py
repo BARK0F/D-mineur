@@ -27,3 +27,12 @@ def isContenuCorrect(nb:int)->bool:
     '''
     return isinstance(nb,int) and 0<= nb <= 8 or nb == const.ID_MINE
 
+def construireCellule(contenu:int=0, visible:bool=False):
+    if isContenuCorrect(contenu) == False:
+        raise ValueError(f"construireCellule : le contenu {contenu} n’est pas correct")
+    if type(visible) != bool:
+        raise TypeError(f"construireCellule : le second paramètre {visible} n’est pas un booléen")
+    dict = {}
+    dict[const.CONTENU] = contenu
+    dict[const.VISIBLE] = visible
+    return dict
