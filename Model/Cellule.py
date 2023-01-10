@@ -20,3 +20,10 @@ def type_cellule(cell: dict) -> bool:
         and (0 <= cell[const.CONTENU] <= 8 or cell[const.CONTENU] == const.ID_MINE)
 
 
+
+def isContenuCorrect(nb:int)->bool:
+    '''
+    retourne un booléen True si l'entier passé en paramètre est bien un entier et si il peut être le contenue d'une cellule
+    '''
+    return isinstance(nb,int) and 0<= nb <= 8 or nb == const.ID_MINE
+
