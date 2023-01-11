@@ -235,3 +235,18 @@ def getMinesRestantesGrilleDemineur(grille:list)->int:
                 nb += 1
     res = getNbMinesGrilleDemineur(grille) - nb
     return res
+
+def gagneGrilleDemineur(grille:list)->bool:
+    '''
+    retourne True ou False si la partie est gagnée ou non
+    '''
+    ligne = getNbLignesGrilleDemineur(grille)
+    colonne = getNbColonnesGrilleDemineur(grille)
+    for x in range(ligne):
+        for y in range(colonne):
+            cell=(x,y)
+            if (isVisibleCellule(getCelluleGrilleDemineur(grille,cell))==False and getContenuGrilleDemineur(grille,cell) != const.ID_MINE) \
+                    or (isVisibleCellule(getCelluleGrilleDemineur(grille,cell))==True and getContenuGrilleDemineur(grille,cell)== const.ID_MINE)\
+                    or getMinesRestantesGrilleDemineur(grille) > 0:
+                return False
+    return True
