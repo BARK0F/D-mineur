@@ -197,3 +197,19 @@ def compterMinesVoisinesGrilleDemineur(grille:list)->None:
                         mine += 1
                 setContenuGrilleDemineur(grille,cell,mine)
     return None
+
+def getNbMinesGrilleDemineur(grille:list)->int:
+    '''
+    retourne le nombre de mine contenue dans la grille
+    '''
+    if type_grille_demineur(grille)==False:
+        raise ValueError("getNbMinesGrilleDemineur : le paramètre n'est pas une grille")
+    ligne = getNbLignesGrilleDemineur(grille)
+    colonne = getNbColonnesGrilleDemineur(grille)
+    mine = 0
+    for x in range(ligne):
+        for y in range(colonne):
+            cell = (x,y)
+            if getContenuGrilleDemineur(grille,cell)==const.ID_MINE:
+                mine += 1
+    return mine
