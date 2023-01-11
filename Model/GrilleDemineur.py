@@ -128,11 +128,34 @@ def isVisibleGrilleDemineur(grille:list,coord:tuple)->bool:
     return isVisibleCellule(con)
 
 def setVisibleGrilleDemineur(grille:list,coord:tuple,vision:bool)->None:
+    '''
+    ne retourne rien, modifie la valeur de la visibilité de la cellule se trouvant dans la grille passée en paramètre
+    '''
     con = getCelluleGrilleDemineur(grille,coord)
     setVisibleCellule(con,vision)
     return None
 
 def contientMineGrilleDemineur(grille:list,coord:tuple)->bool:
+    '''
+    retourne True ou False si la cellule se trouvant aux coordonnée passées en paramètre contient une mine ou non
+    '''
     con = getCelluleGrilleDemineur(grille,coord)
     return contientMineCellule(con)
 
+def getCoordonneeVoisinsGrilleDemineur(grille:list,coord:tuple)->list:
+    '''
+    retourne une liste contenant les coordonnées des cellules voisines de la cellule se trouvant aux coordonnées passées en paramètre
+    '''
+    if type(grille)!=list:
+        raise TypeError("getCoordonneeVoisinGrilleDemineur : un des paramètres n'est pas du bon type")
+    if isCoordonneeCorrecte(grille,coord)==False:
+        raise IndexError("getCoordonneeVoisinsGrilleDemineur : la coordonnée n'est pas dans la grille")
+    res = []
+    for x in [-1,0,1]:
+        for y in [-1,0,1]:
+            if x != 0 or y != 0:
+                ligne = coord[0]+x
+                colonne = coord[1]+y
+                if 0 <= ligne < len(grille) and 0 <= colonne < len(grille[0]):
+                    res.append((ligne,colonne))
+    return res
