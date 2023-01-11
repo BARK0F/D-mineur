@@ -213,3 +213,4 @@ def getNbMinesGrilleDemineur(grille:list)->int:
             if getContenuGrilleDemineur(grille,cell)==const.ID_MINE:
                 mine += 1
     return mine
+
