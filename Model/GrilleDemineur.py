@@ -221,3 +221,17 @@ def getAnnotationGrilleDemineur(grille:list,coord:tuple)->str:
     con = getCelluleGrilleDemineur(grille,coord)
     return getAnnotationCellule(con)
 
+def getMinesRestantesGrilleDemineur(grille:list)->int:
+    '''
+    retourne le nombre restant de bombe a trouver
+    '''
+    nb = 0
+    ligne = getNbLignesGrilleDemineur(grille)
+    colonne = getNbColonnesGrilleDemineur(grille)
+    for x in range(ligne):
+        for y in range(colonne):
+            cell=(x,y)
+            if getAnnotationGrilleDemineur(grille,cell) == const.FLAG:
+                nb += 1
+    res = getNbMinesGrilleDemineur(grille) - nb
+    return res
