@@ -118,3 +118,9 @@ def changeAnnotationCellule(cell:dict)->None:
         if annot == const.DOUTE:
             cell[const.ANNOTATION] = None
     return None
+
+def reinitialiserCellule(cell:dict)->None:
+    cell[const.CONTENU] = 0
+    cell[const.VISIBLE] = False
+    cell[const.ANNOTATION] = None
+    return None
