@@ -102,3 +102,19 @@ def getAnnotationCellule(dic:dict)->str:
     if type_cellule(dic)==False:
         raise TypeError(f"getAnnotationCellule : le paramètre {dic} n'est pas une cellule")
     return dic.get(const.ANNOTATION,None)
+
+def changeAnnotationCellule(cell:dict)->None:
+    '''
+    ne retourne rien, change l'annotation de la cellule selon un cycle (None,FLAG,DOUTE)
+    '''
+    if type_cellule(cell)==False:
+        raise TypeError("changeAnnotationCellule : le paramètre n'est pas une cellule")
+    annot = getAnnotationCellule(cell)
+    if isVisibleCellule(cell)==False:
+        if annot == None:
+            cell[const.ANNOTATION] = const.FLAG
+        if annot == const.FLAG:
+            cell[const.ANNOTATION] = const.DOUTE
+        if annot == const.DOUTE:
+            cell[const.ANNOTATION] = None
+    return None
