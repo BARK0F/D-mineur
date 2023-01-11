@@ -159,3 +159,22 @@ def getCoordonneeVoisinsGrilleDemineur(grille:list,coord:tuple)->list:
                 if 0 <= ligne < len(grille) and 0 <= colonne < len(grille[0]):
                     res.append((ligne,colonne))
     return res
+
+def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple)->None:
+    '''
+    ne retourne rien, place aléatoirement des mines dans la grille sauf a la cellule dont les coord sont passées en paramètre
+    '''
+    if nb <= 0 or nb > (len(grille)*len(grille[0]))-1:
+        raise ValueError("placerMinesGrilleDemineur : Nombre de bombes à placer incorrect")
+    if isCoordonneeCorrecte(grille,coord)==False:
+        raise IndexError("placerMinesGrilleDemineur : la coordonnée n'est pas dans la grille")
+    i = 0
+    while i < nb:
+        x = randint(0, getNbLignesGrilleDemineur(grille))
+        y = randint(0, getNbColonnesGrilleDemineur(grille))
+        cell = (x,y)
+        if isCoordonneeCorrecte(grille,cell)==True:
+            if getContenuGrilleDemineur(grille,cell) != const.ID_MINE and cell != coord:
+                setContenuGrilleDemineur(grille,cell,const.ID_MINE)
+                i += 1
+    return None
