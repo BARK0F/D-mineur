@@ -178,3 +178,21 @@ def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple)->None:
                 setContenuGrilleDemineur(grille,cell,const.ID_MINE)
                 i += 1
     return None
+
+def compterMinesVoisinesGrilleDemineur(grille:list)->None:
+    '''
+    ne retourne rien, compte le nombre de mine autour de chaque cellule qui ne contient pas de mine
+    '''
+    ligne = getNbLignesGrilleDemineur(grille)
+    colonne = getNbColonnesGrilleDemineur(grille)
+    for x in range(ligne):
+        for y in range(colonne):
+            cell = (x,y)
+            if getContenuGrilleDemineur(grille,cell) != const.ID_MINE:
+                mine = 0
+                vois = getCoordonneeVoisinsGrilleDemineur(grille,cell)
+                for i in vois:
+                    if getContenuGrilleDemineur(grille,i) == const.ID_MINE:
+                        mine += 1
+                setContenuGrilleDemineur(grille,cell,mine)
+    return None
