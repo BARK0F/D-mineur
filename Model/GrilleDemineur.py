@@ -214,3 +214,10 @@ def getNbMinesGrilleDemineur(grille:list)->int:
                 mine += 1
     return mine
 
+def getAnnotationGrilleDemineur(grille:list,coord:tuple)->str:
+    '''
+    retourne l'annotation se trouvant dans la cellule qui se trouve dans la grille passée en paramètre aux coordonnée passée en paramètre
+    '''
+    con = getCelluleGrilleDemineur(grille,coord)
+    return getAnnotationCellule(con)
+
